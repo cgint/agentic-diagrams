@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      .bg { fill: #0b1020; }
+      .box { fill: #111a33; stroke: #2b3a74; stroke-width: 2; rx: 14; ry: 14; }
+      .box2 { fill: #0f1730; stroke: #2b3a74; stroke-width: 2; rx: 14; ry: 14; }
+      .txt { fill: #e7eeff; font: 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+      .title { fill: #ffffff; font: 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; font-weight: 650; }
+      .muted { fill: #b9c6ff; font: 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+      .small { fill: #b9c6ff; font: 13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+      .arrow { stroke: #6ea8ff; stroke-width: 3; fill: none; marker-end: url(#m); }
+      .dashed { stroke-dasharray: 8 6; }
+      .badge { fill: #19305f; stroke: #2b3a74; stroke-width: 1; rx: 10; ry: 10; }
+    </style>
+    <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6ea8ff"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="720"/>
+
+  <!-- Header -->
+  <text class="title" x="40" y="48">opencode orchestration core (agent loop + tools)</text>
+  <text class="muted" x="40" y="76">Key idea: one streaming loop produces a durable “parts” state machine, with tool gating + provider normalization around it.</text>
+
+  <!-- Left: Persistent state -->
+  <rect class="box" x="40" y="120" width="360" height="170"/>
+  <text class="title" x="64" y="152">Durable Session State</text>
+  <text class="txt" x="64" y="182">MessageV2 stream (persisted)</text>
+  <text class="small" x="64" y="208">parts: text • reasoning • tool • step-*</text>
+  <text class="small" x="64" y="232">patch • compaction • subtask • file …</text>
+  <text class="small" x="64" y="256">tool part state: pending → running → completed|error</text>
+
+  <!-- Center: Outer loop -->
+  <rect class="box" x="440" y="120" width="340" height="170"/>
+  <text class="title" x="464" y="152">SessionPrompt.loop</text>
+  <text class="small" x="464" y="182">build model request from persisted parts</text>
+  <text class="small" x="464" y="206">schedule meta-work first: compaction / subtask</text>
+  <text class="small" x="464" y="230">resolve toolset (ToolRegistry + MCP) + wrap</text>
+  <text class="small" x="464" y="254">call SessionProcessor.process(...) per step</text>
+
+  <!-- Right: Provider call -->
+  <rect class="box" x="820" y="120" width="340" height="170"/>
+  <text class="title" x="844" y="152">LLM.stream</text>
+  <text class="small" x="844" y="182">system prompt assembly + option merging</text>
+  <text class="small" x="844" y="206">provider normalization + schema shaping</text>
+  <text class="small" x="844" y="230">tool exposure filtering (disabled/overrides)</text>
+  <text class="small" x="844" y="254">tool-call repair → invalid tool fallback</text>
+
+  <!-- Middle: Stream transducer -->
+  <rect class="box2" x="330" y="340" width="540" height="190"/>
+  <text class="title" x="354" y="372">SessionProcessor.process (the transducer)</text>
+  <text class="txt" x="354" y="404">Consumes provider stream → writes canonical parts</text>
+  <text class="small" x="354" y="430">text/reasoning deltas → text/reasoning parts</text>
+  <text class="small" x="354" y="454">tool-call/result/error → tool part state machine</text>
+  <text class="small" x="354" y="478">doom-loop detection → PermissionNext.ask(doom_loop)</text>
+  <text class="small" x="354" y="502">snapshot tracking → patch parts (file diffs)</text>
+  <text class="small" x="354" y="526">retry + status; returns continue|stop|compact</text>
+
+  <!-- Bottom: Tools + permissions + plugins -->
+  <rect class="box" x="40" y="560" width="360" height="120"/>
+  <text class="title" x="64" y="592">Tool Runtime</text>
+  <text class="small" x="64" y="618">ToolRegistry + MCP tools, wrapped uniformly</text>
+  <text class="small" x="64" y="642">tool.execute.before/after hooks</text>
+  <text class="small" x="64" y="666">tools emit metadata/progress + attachments</text>
+
+  <rect class="box" x="440" y="560" width="340" height="120"/>
+  <text class="title" x="464" y="592">PermissionNext</text>
+  <text class="small" x="464" y="618">pattern rules: allow|deny|ask (+ “always”)</text>
+  <text class="small" x="464" y="642">two-layer: remove tools pre-call, ask at runtime</text>
+  <text class="small" x="464" y="666">external_directory, edit/read patterns, doom_loop…</text>
+
+  <rect class="box" x="820" y="560" width="340" height="120"/>
+  <text class="title" x="844" y="592">Plugins / Bus</text>
+  <text class="small" x="844" y="618">system/messages transforms; chat.params</text>
+  <text class="small" x="844" y="642">tool hooks; compaction prompt/context hooks</text>
+  <text class="small" x="844" y="666">bus events drive UI + live subtask progress</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M 400 205 L 440 205"/>
+  <path class="arrow" d="M 780 205 L 820 205"/>
+  <path class="arrow" d="M 610 290 L 600 340"/>
+  <path class="arrow" d="M 600 530 L 610 560"/>
+
+  <!-- Feedback arrow: transducer writes to durable state -->
+  <path class="arrow dashed" d="M 330 435 L 220 435 L 220 290"/>
+  <text class="small" x="70" y="430">writes parts</text>
+
+  <!-- Tool execution loop -->
+  <path class="arrow dashed" d="M 400 620 L 330 620 L 330 475"/>
+  <text class="small" x="78" y="540">tool calls/results</text>
+
+  <!-- Permission gating -->
+  <path class="arrow dashed" d="M 610 560 L 610 530"/>
+  <path class="arrow dashed" d="M 610 340 L 610 290"/>
+  <text class="small" x="630" y="330">gates</text>
+
+  <!-- Provider normalization note badge -->
+  <rect class="badge" x="860" y="310" width="300" height="70"/>
+  <text class="txt" x="878" y="340">Normalization keeps the loop stable:</text>
+  <text class="small" x="878" y="362">messages, tool IDs, schemas, multimodal, caching</text>
+</svg>

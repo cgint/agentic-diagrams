@@ -1,0 +1,69 @@
+direction: right
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+classes: {
+  primary_box: {
+    style: {
+      stroke: "#111827"
+      fill: "#ffffff"
+      stroke-width: 2
+      border-radius: 12
+    }
+  }
+  accent_box: {
+    style: {
+      stroke: "#4338ca"
+      fill: "#eef2ff"
+      stroke-width: 2
+      border-radius: 12
+    }
+  }
+}
+
+title: "opencode orchestration core (agent loop + tools)" {
+  shape: text
+  style: {
+    font-size: 24
+    bold: true
+    font-color: "#111827"
+  }
+}
+
+"Durable Session State": {
+  class: primary_box
+  tooltip: "MessageV2 stream (persisted)"
+  
+  "parts: text • reasoning • tool"
+  "patch • compaction • subtask"
+}
+
+"SessionPrompt.loop": {
+  class: primary_box
+  "build model request"
+  "schedule meta-work"
+}
+
+"LLM.stream": {
+  class: accent_box
+  "system prompt assembly"
+  "provider normalization"
+}
+
+"SessionProcessor.process": {
+  class: accent_box
+  "Consumes provider stream"
+  "text/reasoning deltas"
+}
+
+"Durable Session State" -> "SessionPrompt.loop"
+"SessionPrompt.loop" -> "LLM.stream"
+"LLM.stream" -> "SessionProcessor.process": "gates" {
+  style: {
+    stroke-dash: 5
+  }
+}
+"SessionProcessor.process" -> "Durable Session State": "writes parts"

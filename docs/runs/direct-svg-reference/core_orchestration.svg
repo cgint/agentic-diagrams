@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560">
+  <defs>
+    <style>
+      .box { fill: #ffffff; stroke: #111827; stroke-width: 2; rx: 12; }
+      .muted { fill: #f9fafb; stroke: #6b7280; stroke-width: 2; rx: 12; }
+      .accent { fill: #eef2ff; stroke: #4338ca; stroke-width: 2; rx: 12; }
+      .text { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #111827; }
+      .h { font-size: 16px; font-weight: 700; }
+      .p { font-size: 13px; }
+      .s { font-size: 12px; fill: #374151; }
+      .arrow { stroke: #111827; stroke-width: 2.2; fill: none; marker-end: url(#m); }
+      .darrow { stroke: #6b7280; stroke-width: 2.2; fill: none; marker-end: url(#m2); stroke-dasharray: 6 5; }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#111827"/>
+    </marker>
+    <marker id="m2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text class="text h" x="30" y="40">OpenManus: core orchestration loop (what’s “special”)</text>
+  <text class="text p" x="30" y="64">LLM is the orchestrator; smartness is in prompt steering + state injection + tool registry + budget/guardrails.</text>
+
+  <!-- Main loop boxes -->
+  <rect class="box" x="40" y="110" width="250" height="90"/>
+  <text class="text h" x="60" y="140">Memory (messages[])</text>
+  <text class="text p" x="60" y="164">User / assistant / tool</text>
+  <text class="text p" x="60" y="184">Tool results appended as tool msgs</text>
+
+  <rect class="accent" x="330" y="100" width="330" height="110"/>
+  <text class="text h" x="350" y="130">think(): LLM.ask_tool(...)</text>
+  <text class="text p" x="350" y="154">Inputs: system_prompt + full history</text>
+  <text class="text p" x="350" y="174">+ next_step_prompt (injected each step)</text>
+  <text class="text p" x="350" y="194">+ tools (schemas)</text>
+
+  <rect class="box" x="700" y="110" width="360" height="90"/>
+  <text class="text h" x="720" y="140">tool_calls[]</text>
+  <text class="text p" x="720" y="164">Chosen functions + JSON args</text>
+  <text class="text p" x="720" y="184">Optional assistant text</text>
+
+  <rect class="accent" x="330" y="270" width="330" height="120"/>
+  <text class="text h" x="350" y="300">act(): execute tools</text>
+  <text class="text p" x="350" y="324">Run sequentially (one-by-one)</text>
+  <text class="text p" x="350" y="344">Shape “Observed output …”</text>
+  <text class="text p" x="350" y="364">Append tool msg per tool_call_id</text>
+
+  <!-- Arrows main -->
+  <path class="arrow" d="M290 155 L330 155"/>
+  <path class="arrow" d="M660 155 L700 155"/>
+  <path class="arrow" d="M880 200 L880 245 L660 245 L660 330 L660 330"/>
+  <path class="arrow" d="M330 330 L290 330 L290 200 L165 200 L165 200"/>
+  <path class="arrow" d="M165 200 L165 110"/>
+
+  <!-- Side mechanisms -->
+  <rect class="muted" x="40" y="250" width="250" height="140"/>
+  <text class="text h" x="60" y="280">Guardrails</text>
+  <text class="text p" x="60" y="304">max_steps hard stop</text>
+  <text class="text p" x="60" y="324">duplicate-output stuck detect</text>
+  <text class="text p" x="60" y="344">→ inject “try new strategies”</text>
+  <text class="text p" x="60" y="364">terminate tool → FINISHED</text>
+
+  <path class="darrow" d="M290 320 L330 320"/>
+
+  <rect class="muted" x="700" y="250" width="360" height="140"/>
+  <text class="text h" x="720" y="280">Budget + observation shaping</text>
+  <text class="text p" x="720" y="304">max_observe truncation</text>
+  <text class="text p" x="720" y="324">token counting (text + tools + images)</text>
+  <text class="text p" x="720" y="344">preflight token limit check</text>
+
+  <path class="darrow" d="M660 320 L700 320"/>
+
+  <rect class="muted" x="40" y="420" width="620" height="110"/>
+  <text class="text h" x="60" y="450">What’s special beyond a basic tool-loop</text>
+  <text class="text p" x="60" y="474">1) next_step_prompt as per-step controller  2) MCP hot-plug tools  3) browser state + screenshot injected as user msg</text>
+  <text class="text p" x="60" y="496">4) explicit observation formatting + truncation  5) terminate tool governs lifecycle  6) minimal loop stability knobs</text>
+
+  <rect class="muted" x="700" y="420" width="360" height="110"/>
+  <text class="text h" x="720" y="450">Browser grounding (when used)</text>
+  <text class="text p" x="720" y="474">BrowserContextHelper</text>
+  <text class="text p" x="720" y="494">adds URL/tabs/scroll + screenshot</text>
+  <text class="text p" x="720" y="514">temporarily swaps next_step_prompt</text>
+
+  <!-- Browser/MCP arrows -->
+  <path class="darrow" d="M860 420 L860 210"/>
+  <text class="text s" x="872" y="330">inject</text>
+
+  <!-- MCP note -->
+  <text class="text s" x="720" y="538">MCP: adds/removes tools in ToolCollection at runtime</text>
+</svg>
+

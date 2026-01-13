@@ -1,0 +1,37 @@
+:root {
+  --mermaid-font-family: "ui-sans-serif", system-ui, sans-serif;
+}
+
+.node rect {
+  fill: #ffffff !important;
+  stroke: #111827 !important;
+  stroke-width: 2px !important;
+  rx: 12px !important;
+  ry: 12px !important;
+}
+
+.node .label {
+  color: #111827 !important;
+  font-weight: 500 !important;
+}
+
+.edgePath .path {
+  stroke: #111827 !important;
+  stroke-width: 2px !important;
+}
+
+.marker {
+  fill: #111827 !important;
+  stroke: #111827 !important;
+}
+
+.cluster rect {
+  fill: #f9fafb !important;
+  stroke: #6b7280 !important;
+  stroke-dasharray: 5, 5 !important;
+}
+
+.cluster .label {
+  color: #111827 !important;
+  font-weight: bold !important;
+}

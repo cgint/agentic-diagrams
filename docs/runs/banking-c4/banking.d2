@@ -1,0 +1,33 @@
+# D2 C4 Container Diagram
+direction: right
+vars: {
+  d2-config: {
+    layout-engine: elk
+  }
+}
+
+Customer: {
+  shape: person
+  description: "A customer of the bank, with personal bank accounts."
+}
+
+"Banking System": {
+  WebApp: {
+    shape: rectangle
+    description: "Delivers the static content and the Internet banking single page application."
+  }
+  API: {
+    shape: rectangle
+    description: "Provides Internet banking functionality via a JSON/HTTPS API."
+  }
+  Database: {
+    shape: cylinder
+    description: "Stores user registration information, hashed authentication credentials, access logs, etc."
+  }
+
+  WebApp -> API: "Makes API calls to [JSON/HTTPS]"
+  API -> Database: "Reads from and writes to"
+}
+
+Customer -> "Banking System".WebApp: "Visits banking.com/ [HTTPS]"
+Customer -> "Banking System".API: "Views account balances, and makes payments [JSON/HTTPS]"
