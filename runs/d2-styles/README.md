@@ -9,14 +9,10 @@ This run explores how D2 styling and theme options affect aesthetics for the sam
 ## Outputs
 
 - Default: `runs/d2-styles/stylized_core.svg`
-- Default (PNG): `runs/d2-styles/stylized_core.png`
 - Light variant: `runs/d2-styles/stylized_core_light.svg`
-- Light variant (PNG): `runs/d2-styles/stylized_core_light.png`
 - Dark variant: `runs/d2-styles/stylized_core_dark.svg`
 - Sketch variant: `runs/d2-styles/stylized_core_sketch.svg`
-- Sketch variant (PNG): `runs/d2-styles/stylized_core_sketch.png`
 - Sketch (Docker): `runs/d2-styles/stylized_core_sketch_docker.svg`
-- Sketch (Docker PNG): `runs/d2-styles/stylized_core_sketch_docker.png`
 
 ## Visuals
 
