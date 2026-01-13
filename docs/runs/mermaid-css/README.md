@@ -14,6 +14,14 @@ This run tests Mermaid styling via custom CSS to get a more polished aesthetic.
 - Light: `docs/runs/mermaid-css/light_mermaid.svg`
 - Light (PNG): `docs/runs/mermaid-css/light_mermaid.png`
 
+## Visuals
+
+### Dark Theme
+![Dark Theme](stylized_mermaid.svg)
+
+### Light Theme
+![Light Theme](light_mermaid.svg)
+
 ## Rendering (example)
 
 ```bash

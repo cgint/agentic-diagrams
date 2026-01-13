@@ -18,6 +18,23 @@ This run explores how D2 styling and theme options affect aesthetics for the sam
 - Sketch (Docker): `docs/runs/d2-styles/stylized_core_sketch_docker.svg`
 - Sketch (Docker PNG): `docs/runs/d2-styles/stylized_core_sketch_docker.png`
 
+## Visuals
+
+### Default
+![Default](stylized_core.svg)
+
+### Light
+![Light](stylized_core_light.svg)
+
+### Dark
+![Dark](stylized_core_dark.svg)
+
+### Sketch
+![Sketch](stylized_core_sketch.svg)
+
+### Sketch (Docker)
+![Sketch Docker](stylized_core_sketch_docker.svg)
+
 ## Rendering (example)
 
 ```bash

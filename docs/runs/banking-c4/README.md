@@ -13,6 +13,16 @@ This run compares a simple C4-style banking diagram rendered with D2 and Mermaid
 - D2 (PNG): `docs/runs/banking-c4/banking_d2.png`
 - Mermaid: `docs/runs/banking-c4/banking_mermaid.svg`
 
+## Visuals
+
+### D2
+
+![D2](banking_d2.svg)
+
+### Mermaid
+
+![Mermaid](banking_mermaid.svg)
+
 ## Rendering (example)
 
 ```bash

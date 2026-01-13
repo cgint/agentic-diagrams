@@ -12,6 +12,14 @@ These SVGs are the visual target for the "nice-looking" aesthetic. They are not 
 - `docs/runs/direct-svg-reference/ANALYSIS-opencode-core-smartness-2026-01-13.png`
 - `docs/runs/direct-svg-reference/core_orchestration-2026-01-13.png`
 
+## Visuals
+
+### Analysis
+![Analysis](ANALYSIS-opencode-core-smartness.svg)
+
+### Core Orchestration
+![Core Orchestration](core_orchestration.svg)
+
 ## Notes
 
 - These files represent the desired visual quality for automated pipelines.
