@@ -4,14 +4,14 @@ This run compares a simple C4-style banking diagram rendered with D2 and Mermaid
 
 ## Inputs
 
-- `docs/runs/banking-c4/banking.d2`
-- `docs/runs/banking-c4/banking.mmd`
+- `runs/banking-c4/banking.d2`
+- `runs/banking-c4/banking.mmd`
 
 ## Outputs
 
-- D2: `docs/runs/banking-c4/banking_d2.svg`
-- D2 (PNG): `docs/runs/banking-c4/banking_d2.png`
-- Mermaid: `docs/runs/banking-c4/banking_mermaid.svg`
+- D2: `runs/banking-c4/banking_d2.svg`
+- D2 (PNG): `runs/banking-c4/banking_d2.png`
+- Mermaid: `runs/banking-c4/banking_mermaid.svg`
 
 ## Visuals
 

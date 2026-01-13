@@ -4,19 +4,19 @@ This run explores how D2 styling and theme options affect aesthetics for the sam
 
 ## Input
 
-- `docs/runs/d2-styles/stylized_core.d2`
+- `runs/d2-styles/stylized_core.d2`
 
 ## Outputs
 
-- Default: `docs/runs/d2-styles/stylized_core.svg`
-- Default (PNG): `docs/runs/d2-styles/stylized_core.png`
-- Light variant: `docs/runs/d2-styles/stylized_core_light.svg`
-- Light variant (PNG): `docs/runs/d2-styles/stylized_core_light.png`
-- Dark variant: `docs/runs/d2-styles/stylized_core_dark.svg`
-- Sketch variant: `docs/runs/d2-styles/stylized_core_sketch.svg`
-- Sketch variant (PNG): `docs/runs/d2-styles/stylized_core_sketch.png`
-- Sketch (Docker): `docs/runs/d2-styles/stylized_core_sketch_docker.svg`
-- Sketch (Docker PNG): `docs/runs/d2-styles/stylized_core_sketch_docker.png`
+- Default: `runs/d2-styles/stylized_core.svg`
+- Default (PNG): `runs/d2-styles/stylized_core.png`
+- Light variant: `runs/d2-styles/stylized_core_light.svg`
+- Light variant (PNG): `runs/d2-styles/stylized_core_light.png`
+- Dark variant: `runs/d2-styles/stylized_core_dark.svg`
+- Sketch variant: `runs/d2-styles/stylized_core_sketch.svg`
+- Sketch variant (PNG): `runs/d2-styles/stylized_core_sketch.png`
+- Sketch (Docker): `runs/d2-styles/stylized_core_sketch_docker.svg`
+- Sketch (Docker PNG): `runs/d2-styles/stylized_core_sketch_docker.png`
 
 ## Visuals
 

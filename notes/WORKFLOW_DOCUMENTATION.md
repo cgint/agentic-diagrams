@@ -24,16 +24,16 @@ Customer: {
 Customer -> "Banking System".WebApp: "Visits website"
 ```
 
-### Step 2: Rendering to SVG
-The agent executes the D2 CLI. This is a single, fast binary operation with no external dependencies (like Java or a browser).
+### Step 2: Rendering and Styling
+The agent executes the D2 CLI. One of D2's strengths is the ability to apply "hand-drawn" or professional themes without changing the diagram source.
 
-**Command:**
+**Command (Polished/Sketchy):**
 ```bash
-d2 banking.d2 banking_d2.svg
+d2 --sketch --theme 200 input.d2 output.svg
 ```
 
 ### Step 3: Result
-The resulting `banking_d2.svg` is a standalone, modern-looking vector graphic ready for documentation or web display.
+The resulting `banking_d2.svg` is a standalone, modern-looking vector graphic. The "sketch" mode is particularly useful for indicating that a diagram represents an evolving concept rather than a final, rigid specification.
 
 ---
 
@@ -44,26 +44,24 @@ Mermaid is widely supported and uses a syntax that most LLMs are already very fa
 ### Step 1: Configuration Generation
 The agent generates a `.mmd` file using specialized diagram types (like `C4Context`).
 
-**Example Input (`banking.mmd`):**
-```plaintext
-C4Context
-    Person(customer, "Customer")
-    System(banking, "Banking System")
-    Rel(customer, banking, "Uses")
-```
-
-### Step 2: Rendering to SVG
-The agent uses `mermaid-cli` (`mmdc`). This requires a Node.js environment and a headless browser (Puppeteer).
+### Step 2: Rendering and Theming
+The agent uses `mermaid-cli` (`mmdc`). While Mermaid has built-in themes, high-end aesthetics usually require a custom CSS file to be passed during rendering.
 
 **Command:**
 ```bash
-mmdc -i banking.mmd -o banking_mermaid.svg
+mmdc -i banking.mmd -o banking_mermaid.svg --cssFile custom_theme.css
 ```
 
-### Step 3: Result
-The resulting `banking_mermaid.svg` is a polished, CSS-stylable graphic.
-
 ---
+
+## The Live Multi-Modal Loop
+
+In an agentic workflow, these diagrams are not just static artifacts for a wiki; they are part of a live communication loop:
+
+1.  **Agent Proposes:** Agent generates a diagram to visualize its plan or its understanding of a codebase.
+2.  **Human Audits:** The human user views the SVG in a multi-modal interface and can immediately spot logical errors or missing components.
+3.  **Human Corrects:** User provides feedback ("The Database should be outside the API boundary").
+4.  **Agent Refines:** Agent updates the DSL code and re-renders, providing an instant visual confirmation of the fix.
 
 ## Agent Requirements & Responsibility
 

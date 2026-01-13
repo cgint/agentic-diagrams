@@ -1,6 +1,6 @@
 # TASK_IDEA
 
-Source: `docs/notes/TASK_IDEA.md`
+Source: `notes/TASK_IDEA.md`
 
  I want you to find out what is a good description language for an AI agent to create technical and nice-looking illustrations for users that have a diagram characteristic. 
 
@@ -29,7 +29,7 @@ I would absolutely prefer and actually want open-source tools only. 
 
 ## TASK_INITIAL_ANALYSIS
 
-Source: `docs/notes/TASK_INITIAL_ANALYSIS.md`
+Source: `notes/TASK_INITIAL_ANALYSIS.md`
 
 For an AI agent to generate technical yet visually appealing diagrams that also support C4 models, there are three primary open-source recommendations that move beyond the "basic" look of standard PlantUML or Graphviz.
 
@@ -89,7 +89,7 @@ This video provides a practical overview of how to use Excalidraw for creating d
 
 ## TASK_PREFACE_CONTEXT
 
-Source: `docs/notes/TASK_PREFACE_CONTEXT.md`
+Source: `notes/TASK_PREFACE_CONTEXT.md`
 
 # Preface (Condensed)
 

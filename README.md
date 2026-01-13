@@ -1,6 +1,4 @@
-# Enable AI to use diagrams for means of communication
-
-![Analysis](docs/runs/d2-styles/stylized_core_sketch.svg)
+![Analysis](runs/d2-styles/stylized_core_sketch.svg)
 
 This repository tests how well AI agents can express ideas as **diagrams**, not just text. The goal is to compare diagram DSLs (primarily **D2** and **Mermaid**) for:
 
@@ -9,25 +7,25 @@ This repository tests how well AI agents can express ideas as **diagrams**, not 
 - Fit for C4-style architecture diagrams
 - Practical rendering workflows
 
-The experiments here are based on the initial research captured in `docs/notes/DESCRIPTION_OF_TASK.md` and are structured as reproducible "runs" with inputs, configs, and outputs.
+The experiments here are based on the initial research captured in `notes/DESCRIPTION_OF_TASK.md` and are structured as reproducible "runs" with inputs, configs, and outputs.
 
-## Why even bother ... the common picture
+## Why even bother
 
-Diagrams are communication tools that bridge the gap between abstract code and mental models.
+Diagrams are high-bandwidth communication tools that bridge the gap between abstract code and mental models.
 
 - **Documentation Generation**: Automated diagrams turn "walls of text" into scannable architecture maps that stay in sync with the codebase more easily than hand-drawn assets.
 - **Live Human-AI Collaboration**: In a multi-modal communication interface, diagrams allow agents to "show" their understanding of complex problems. This enables humans to visually audit the AI's reasoning, catch misalignments early, and collaborate on a shared spatial canvas rather than just trading text blocks.
 
-## Why this exists ... just use SVG
+## Why this exists
 
 Direct SVG generation is brittle for LLMs. Instead, we let the AI produce a **diagram description language** and then render it via a toolchain. This repo documents which tools hold up best and what the outputs look like.
 
 ## Runs (start here)
 
-- `docs/runs/banking-c4/README.md` — C4-style banking example in D2 vs Mermaid
-- `docs/runs/mermaid-css/README.md` — Mermaid CSS theming (dark + light)
-- `docs/runs/d2-styles/README.md` — D2 styling variants (light/dark/sketch)
-- `docs/runs/direct-svg-reference/README.md` — reference SVGs used as the aesthetic target
+- `runs/banking-c4/README.md` — C4-style banking example in D2 vs Mermaid
+- `runs/mermaid-css/README.md` — Mermaid CSS theming (dark + light)
+- `runs/d2-styles/README.md` — D2 styling variants (light/dark/sketch)
+- `direct-svg-reference/README.md` — reference SVGs used as the aesthetic target
 
 ## Quick comparison
 
@@ -51,10 +49,10 @@ mmdc -i input.mmd -o output.svg --cssFile custom_mermaid.css
 
 ## Repository map
 
-- `docs/runs/` — each test run with inputs, configs, outputs, and notes
-- `docs/notes/` — research context and planning notes
-- `docs/_archive/` — duplicates or superseded artifacts (kept for traceability)
+- `runs/` — each test run with inputs, configs, outputs, and notes
+- `notes/` — research context and planning notes
+- `direct-svg-reference/` — benchmark SVGs
 
 ## License
 
-TBD (please add a license before publishing).
+[MIT License](LICENSE)
