@@ -1,4 +1,14 @@
+# Enable AI to use diagrams for means of communication
+
+## Primer
+
+The ability for AI to generate diagrams is not new; most modern LLMs can readily output Mermaid or PlantUML code. However, this repository was started to identify the **simplest and most effective workflow** for an AI to generate visual models that are truly human-digestible.
+
+We aren't just looking for syntax compatibility. We are testing how an agent can be enabled to produce high-quality diagrams alongside text responses in a live, multi-modal interface. This project serves as a "check of the state of the art," testing and comparing different DSLs to see which ones best support a seamless transition from abstract thought to clear, professional illustration.
+
 ![Analysis](runs/d2-styles/stylized_core_sketch.svg)
+
+## What this repository shows
 
 This repository tests how well AI agents can express ideas as **diagrams**, not just text. The goal is to compare diagram DSLs (primarily **D2** and **Mermaid**) for:
 
@@ -32,9 +42,25 @@ Direct SVG generation is brittle for LLMs. Instead, we let the AI produce a **di
 - **D2**: strongest out-of-the-box aesthetics, great for C4, native CLI rendering
 - **Mermaid**: best portability and AI training coverage, CSS-based theming
 
-## Rendering notes
+## Conclusion
 
-Examples used across runs:
+Based on these experiments, **D2** is the preferred choice for agentic diagram generation.
+
+- **Structure & Clarity**: The nested D2 syntax is familiar and highly reliable for AI agents to generate, providing a level of structural clarity that direct SVG generation lacks.
+- **Aesthetic Flexibility**: With support for various themes and a unique "sketch" mode, D2 produces diagrams that are not only technically accurate but also human-appealing and modern.
+- **Technical Fallback**: For use cases requiring strictly standardized or legacy technical diagrams, **PlantUML** remains the recommended alternative.
+
+---
+
+## Rendering
+
+You can render all diagrams in the repository using the provided automation script:
+
+```bash
+./render_all.sh
+```
+
+### Manual Commands (examples)
 
 ```bash
 # D2 (nice-looking, sketchy)
