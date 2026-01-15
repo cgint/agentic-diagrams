@@ -50,6 +50,12 @@ Based on these experiments, **D2** is the preferred choice for agentic diagram g
 - **Aesthetic Flexibility**: With support for various themes and a unique "sketch" mode, D2 produces diagrams that are not only technically accurate but also human-appealing and modern.
 - **Technical Fallback**: For use cases requiring strictly standardized or legacy technical diagrams, **PlantUML** remains the recommended alternative.
 
+### Example of same content, different styles
+
+See [runs/d2-styles/README.md](runs/d2-styles/README.md) for a collection of the same content, different styles.
+
+![Same content, different styles](runs/d2-styles/style_collection.png)
+
 ---
 
 ## Rendering
