@@ -1,0 +1,32 @@
+
+user: User
+ui: "UI /acp-controller"
+facade: "Genie.ACP"
+registry: "Config Registry"
+supervisor: "ConnectionSupervisor"
+backend_acp: "Backends.ACP"
+backend_proc: "Backends.Process"
+acpex_lib: "ACPex Library"
+agent_proc: "OpenCode Agent"
+os_proc: "OS Process"
+pubsub: PubSub
+
+user -> ui: "1. Selects Backend\n2. Clicks Connect"
+ui -> facade: start_connection(id)
+facade -> registry: Lookup(id)
+registry -> facade: "{Module, Opts}"
+facade -> supervisor: "start_child(Module, Opts)"
+
+supervisor -> backend_acp: "Starts (if ACP)"
+supervisor -> backend_proc: "Starts (if Process)"
+
+backend_acp -> acpex_lib: JSON-RPC
+acpex_lib -> agent_proc: Stdio
+
+backend_proc -> os_proc: "Port/Stdio"
+
+backend_acp -> pubsub: "Broadcast Events"
+backend_proc -> pubsub: "Broadcast Events"
+
+pubsub -> ui: "Stream Updates"
+
