@@ -1,0 +1,9 @@
+title: Pi RPC Protocol Flow | {near: top-center}
+
+Message Generation {
+  Pi -> Client: "message_start"
+  loop Streaming {
+    Pi -> Client: "message_update (deltas)"
+  }
+  Pi -> Client: "message_end"
+}

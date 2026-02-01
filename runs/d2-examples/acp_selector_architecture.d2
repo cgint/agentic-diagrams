@@ -1,0 +1,25 @@
+direction: down
+title: ACP Controller Selector & Backend Abstraction {near: top-center}
+
+Controller {
+    user: User {
+        shape: person
+    }
+    ui: "UI /acp-controller"
+}
+
+Backend {
+    facade: "Genie.ACP"
+    registry: "Config Registry"
+    supervisor: "ConnectionSupervisor"
+    pubsub: PubSub
+
+}
+Controller.user -> Controller.ui: "1. Selects Backend\n2. Clicks Connect"
+Controller.ui -> Backend.facade: start_connection(id)
+Backend.pubsub -> Controller.ui: "Stream Updates"
+
+Backend.facade -> Backend.registry: Lookup(id)
+Backend.registry -> Backend.facade: "{Module, Opts}"
+Backend.facade -> Backend.supervisor: "start_child(Module, Opts)"
+Backend.facade -> Backend.pubsub: "Broadcast Events"
