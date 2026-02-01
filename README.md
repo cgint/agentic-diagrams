@@ -35,6 +35,8 @@ Direct SVG generation is brittle for LLMs. Instead, we let the AI produce a **di
 - `runs/banking-c4/README.md` — C4-style banking example in D2 vs Mermaid
 - `runs/mermaid-css/README.md` — Mermaid CSS theming (dark + light)
 - `runs/d2-styles/README.md` — D2 styling variants (light/dark/sketch)
+- `runs/d2-examples/README.md` — small, focused D2 examples (syntax patterns, building blocks)
+- `runs/d2-layout-engines/README.md` — D2 layout engine comparisons (e.g., default vs ELK)
 - `direct-svg-reference/README.md` — reference SVGs used as the aesthetic target
 
 ## Quick comparison
